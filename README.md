@@ -1,80 +1,174 @@
-# 🚀 SUI Volume Bot (CETUS-DEX)
+# 🚀 SUI Volume Bot for Cetus DEX
 
-The **SUI Volume Bot** is an automated trading bot designed to execute **continuous buy and sell swaps** on the **CETUS DEX**. It helps increase **trading volume and maker activity** while optimizing gas fees for maximum efficiency.
+A sophisticated automated trading bot designed to increase trading volume and liquidity on the **Cetus DEX** through intelligent buy/sell operations on the SUI blockchain.
 
-### 🔥 Note:
-The **original project is written in TypeScript**. This repository contains a **compiled demo version**. For access to the **full version**, please contact me on **Telegram or Twitter**.
+[![Telegram](https://img.shields.io/badge/Telegram-Contact%20Me-blue?style=for-the-badge&logo=telegram)](https://t.me/cashblaze129)
 
----
+## 🌟 Features
 
-## 🌟 Key Features
-✅ **Automated SUI Distribution** – Distributes SUI to new wallets automatically.<br>
-✅ **Endless Buy and Sell Swaps** – Executes continuous transactions to maintain liquidity and trading volume.<br>
-✅ **Optimized Gas Fees** – Uses smart fee calculation to keep costs minimal.<br>
-✅ **Customizable Trading Parameters** – Allows users to adjust **trade amount, intervals, and wallet distribution**.<br>
-✅ **Multi-Wallet Support** – Spreads volume across multiple wallets for enhanced trading impact.<br>
-✅ **CETUS DEX Integration** – Fully compatible with CETUS DEX liquidity pools and AMM mechanics.<br>
+- **🔄 Automated Volume Generation** - Continuous buy/sell swaps to boost trading volume
+- **💰 Multi-Wallet Distribution** - Spreads operations across multiple wallets for enhanced impact
+- **⚡ Gas Optimization** - Smart fee management and transaction optimization
+- **🎯 Customizable Parameters** - Adjustable trade amounts, intervals, and wallet distribution
+- **🛡️ Error Handling** - Robust error recovery and transaction monitoring
+- **📊 Real-time Monitoring** - Live transaction tracking and balance monitoring
+- **🔧 Easy Configuration** - Simple environment-based setup
 
----
+## 📋 Prerequisites
 
-## ⚙️ How It Works
-1️⃣ The bot **distributes SUI** among multiple wallets.<br>
-2️⃣ It performs **simultaneous buy and sell swaps** to increase volume.<br>
-3️⃣ All transactions are **optimized for gas efficiency**.<br>
-4️⃣ The bot continuously **monitors trading activity and adjusts parameters dynamically**.<br>
+- Node.js (v20 or higher)
+- npm or yarn package manager
+- SUI wallet with sufficient balance
+- Cetus DEX pool access
 
----
+## 🛠️ Installation
 
-## 📋 Environment Variables
-Before running the bot, configure the required **environment variables**.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/cashblaze129/sui-volume-bot-on-cetus.git
+cd sui-volume-bot-on-cetus
+```
 
-1. **Rename the `.env.copy` file to `.env`.**
-2. **Set the required variables:**
+### 2. Install Dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-```plaintext
-PRIVATE_KEY=your_wallet_private_key_here
+### 3. Environment Configuration
+Create a `.env` file in the root directory:
+
+```bash
+cp .env.example .env
+```
+
+Configure the following environment variables:
+
+```env
+# Network Configuration
+NETWORK=mainnet
 RPC_ENDPOINT=https://fullnode.mainnet.sui.io
-CETUS_POOL_ID=pool_id_here
-BUY_AMOUNT=10  # SUI amount per buy order
-SELL_AMOUNT=10 # SUI amount per sell order
-INTERVAL=5     # Time interval between swaps (in seconds)
-NUM_WALLETS=5  # Number of wallets to distribute volume across
+RPC_WEBSOCKET_ENDPOINT=wss://fullnode.mainnet.sui.io
+
+# Wallet Configuration
+PRIVATE_KEY=your_wallet_private_key_here
+
+# Trading Parameters
+POOL_ID=your_cetus_pool_id_here
+SWAP_AMOUNT_MIN=1
+SWAP_AMOUNT_MAX=10
+BUY_INTERVAL_MIN=30
+BUY_INTERVAL_MAX=120
+DISTRIBUTE_INTERVAL_MIN=60
+DISTRIBUTE_INTERVAL_MAX=300
 ```
 
----
-
-## 🛠️ Installation & Setup
-
-1️⃣ **Clone the Repository**
-```sh
-git clone https://github.com/T-rustdev/cetus-volume-booster-sui.git
-cd cetus-volume-booster-sui
+### 4. Run the Bot
+```bash
+npm start
+# or
+yarn start
 ```
 
-2️⃣ **Install Dependencies**
-```sh
-yarn install  # or npm install
+## ⚙️ Configuration Options
+
+### Trading Parameters
+- `SWAP_AMOUNT_MIN/MAX`: Range of SUI amounts for each swap (in SUI)
+- `BUY_INTERVAL_MIN/MAX`: Time intervals between buy operations (in seconds)
+- `DISTRIBUTE_INTERVAL_MIN/MAX`: Time intervals between wallet distributions (in seconds)
+
+### Network Settings
+- `NETWORK`: Target network (mainnet/testnet)
+- `RPC_ENDPOINT`: SUI RPC endpoint for blockchain interactions
+- `RPC_WEBSOCKET_ENDPOINT`: WebSocket endpoint for real-time updates
+
+## 🔧 Advanced Usage
+
+### Custom Pool Configuration
+To use a specific Cetus pool, update the `POOL_ID` in your `.env` file:
+
+```env
+POOL_ID=0x1234567890abcdef...  # Your specific pool ID
 ```
 
-3️⃣ **Run the Bot**
-```sh
-yarn start  # or npm start
-```
+### Multi-Wallet Operations
+The bot automatically creates and manages multiple wallets for volume distribution. Wallets are stored in `data.json` and can be managed through the utility functions.
 
----
+### Monitoring and Logs
+The bot provides detailed logging including:
+- Transaction hashes with SuiScan links
+- Wallet addresses and balances
+- Swap operation details
+- Error messages and recovery attempts
 
 ## 📊 Performance Optimization
-- Uses **CETUS DEX swap routing** for efficient trades.
-- Implements **priority fee management** for fast execution.
-- Supports **multiple RPC endpoints** for reliability.
-- Dynamically adjusts **buy/sell sizes** based on market conditions.
 
----
+### Gas Fee Management
+- Automatic priority fee calculation
+- Transaction batching for efficiency
+- Smart retry mechanisms
 
-## 📞 Contact
-📩 For full access, reach out via:
-- **Telegram:** [T-rustdev](https://t.me/T_rustdev)
+### Volume Distribution
+- Random amount generation within configured ranges
+- Multi-wallet rotation for natural trading patterns
+- Dynamic interval adjustment
 
----
+## 🛡️ Security Considerations
 
-⚡ **Use responsibly! This bot is designed for increasing volume and liquidity. Always test in a safe environment before deploying on the mainnet.** 🚀
+⚠️ **Important Security Notes:**
+- Never share your private keys
+- Use dedicated wallets for bot operations
+- Monitor transactions regularly
+- Start with small amounts for testing
+- Keep your `.env` file secure and never commit it to version control
+
+## 📁 Project Structure
+
+```
+sui-volume-bot-on-cetus/
+├── src/                    # Source code
+│   ├── index.js           # Main exports
+│   ├── suiKit.js          # SUI interaction utilities
+│   ├── swap.js            # Swap operations
+│   └── types/             # Type definitions
+├── utils/                  # Utility functions
+│   ├── index.js           # Utility exports
+│   └── utils.js           # Core utilities
+├── constants/              # Configuration constants
+│   ├── constants.js       # Environment variables
+│   └── index.js           # Constants exports
+├── index.js               # Main bot entry point
+├── gather.js              # Data gathering utilities
+├── package.json           # Dependencies and scripts
+└── README.md              # This file
+```
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+1. **Insufficient Balance**
+   ```
+   Error: Not enough SUI in main wallet
+   ```
+   Solution: Ensure your main wallet has sufficient SUI balance
+
+2. **RPC Connection Issues**
+   ```
+   Error: RPC endpoint not responding
+   ```
+   Solution: Check your RPC endpoint configuration and network connectivity
+
+3. **Pool Not Found**
+   ```
+   Error: Pool ID not found
+   ```
+   Solution: Verify your pool ID is correct and accessible
+
+### Debug Mode
+Enable detailed logging by setting the `DEBUG` environment variable:
+
+```env
+DEBUG=true
+```

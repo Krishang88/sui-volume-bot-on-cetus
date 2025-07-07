@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  sui-volume-bot:
+    build: .
+    container_name: sui-volume-bot
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('Bot is healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add monitoring service
+  monitoring:
+    image: grafana/grafana:latest
+    container_name: sui-bot-monitoring
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - sui-volume-bot
+
+volumes:
+  grafana-storage:
